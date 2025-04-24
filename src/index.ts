@@ -1,19 +1,18 @@
-import { EventEmitter, Subscription } from "expo-modules-core";
 import { useEffect, useState } from "react";
 
-import { AspectRatioProps, PictureInPictureParams } from "./ExpoPip.types";
+import { PictureInPictureParams } from "./ExpoPip.types";
 import ExpoPipModule from "./ExpoPipModule";
-
-const emitter = new EventEmitter(ExpoPipModule);
 
 export type PictureInPictureModeChangeEvent = {
   isInPictureInPictureMode: boolean;
 };
 
+export type PictureInPictureModeChangeListener = (event: PictureInPictureModeChangeEvent) => void;
+
 export function addPictureInPictureModeListener(
-  listener: (event: PictureInPictureModeChangeEvent) => void
-): Subscription {
-  return emitter.addListener<PictureInPictureModeChangeEvent>(
+  listener: PictureInPictureModeChangeListener
+) {
+  return ExpoPipModule.addListener(
     "onPictureInPictureModeChanged",
     listener
   );
@@ -45,27 +44,6 @@ export function useIsInPip() {
   }, [setInPipMode]);
 
   return { isInPipMode };
-}
-
-/**
- *
- * @deprecated use `setPictureInPictureParams()`
- */
-export function setAspectRatio({ height, width }: AspectRatioProps) {
-  setPictureInPictureParams({
-    width,
-    height,
-  });
-}
-
-/**
- *
- * @deprecated use `setPictureInPictureParams()`
- */
-export function setAutoEnterEnabled(autoEnterEnabled: boolean) {
-  setPictureInPictureParams({
-    autoEnterEnabled,
-  });
 }
 
 export * from "./ExpoPip.types";

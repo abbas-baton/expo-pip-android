@@ -1,4 +1,4 @@
-import { withAndroidManifest, ConfigPlugin } from "expo/config-plugins";
+import { withAndroidManifest, ConfigPlugin } from "@expo/config-plugins";
 
 const withMyApiKey: ConfigPlugin = (config) => {
   config = withAndroidManifest(config, (config) => {

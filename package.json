@@ -32,8 +32,8 @@
   "homepage": "https://github.com/EdgarJMesquita/expo-pip#readme",
   "devDependencies": {
     "@types/react": "^18.0.25",
-    "expo-module-scripts": "^3.4.1",
-    "expo-modules-core": "^1.11.12"
+    "expo-module-scripts": "^4.0.5",
+    "expo-modules-core": "^2.2.3"
   },
   "peerDependencies": {
     "expo": "*",
